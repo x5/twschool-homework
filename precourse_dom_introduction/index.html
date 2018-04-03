@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=900, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM Introduction Homework by SHEN LIU</title>
+    <style  media="screen" type="text/css">
+        div {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+            margin-bottom: 20px;
+        }
+        #formTitle {
+            font-size: 1.5em;
+            color:darkslateblue;
+        }
+        label {
+            width: 500px;
+            display: block;
+            margin-top: 5px;
+        }
+        form {
+            margin: 50px;
+        }
+        input[type=submit]{
+            padding: 5px 20px;
+            background-color: lightblue;
+        }
+        .error {
+            color: deeppink;
+            font-size: 0.5em;
+            font-weight: bold;
+        }
+        #loginsuccess {
+            color: darkolivegreen;
+            font-size: 0.5em;
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript">
+        
+        function checkUsername() {
+            var check;
+            var userName = document.getElementById("username").value;
+            if ( userName == "liushen" ) {
+                check = true;
+            } else if ( userName == "" ) {
+                check = false;
+                document.getElementById("usernameerror").innerHTML = "用户名不能为空";
+            } else {
+                check = false;
+                document.getElementById("usernameerror").innerHTML = "用户名错误，请重新输入";
+            }
+            return check;
+        }
+
+        function checkPassword() {
+            var check;
+            var userPassword = document.getElementById("userpassword").value;
+            if ( userPassword == "123" ) {
+                check = true;
+            } else if ( userPassword == "" ) {
+                check = false;
+                document.getElementById("userpassworderror").innerHTML = "密码不能为空";
+            } else {
+                check = false;
+                document.getElementById("userpassworderror").innerHTML = "密码错误，请重新输入";
+            }
+            return check;
+        }
+
+        function check() {
+            var check = checkUsername() && checkPassword();
+            if ( check == true ) {
+                document.getElementById("loginsuccess").innerHTML = "登录成功";
+                document.getElementById("usernameerror").innerHTML = "";
+                document.getElementById("userpassworderror").innerHTML = "";
+            }
+            return check;
+        }
+
+    </script>
+</head>
+<body>
+    <form action="#" method="get" onsubmit="return check()">
+        <div id="formTitle">Login</div>
+        <div>
+            <label for="username">User Name: </label>
+            <input type="text" name="username" id="username">
+            <label id="usernameerror" class="error"></label>
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" id="userpassword">
+            <label id="userpassworderror" class="error"></label>
+        </div>
+        <div>
+            <input type="submit" value="Submit" id="submit">
+            <label id="loginsuccess"></label>
+        </div>
+    </form>    
+</body>
+</html>
